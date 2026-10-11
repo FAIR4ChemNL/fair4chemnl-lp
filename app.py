@@ -6,7 +6,6 @@ from flask import Flask, abort, render_template, send_from_directory
 
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
-BACKGROUND = "background/learning_path.png"
 
 app = Flask(__name__)
 
@@ -34,7 +33,6 @@ def path_page(name):
         title=paths[name],
         prefix="/",
         data_url=f"/data/{name}.json",
-        background=f"/{BACKGROUND}",
     )
 
 
@@ -42,10 +40,6 @@ def path_page(name):
 def data_file(filename):
     return send_from_directory(DATA_DIR, filename)
 
-
-@app.route("/background/learning_path.png")
-def background():
-    return send_from_directory(ROOT / "background", "learning_path.png")
 
 
 if __name__ == "__main__":

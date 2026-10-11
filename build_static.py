@@ -6,7 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from app import ROOT, DATA_DIR, BACKGROUND, app, available_paths
+from app import ROOT, DATA_DIR, app, available_paths
 
 OUT = ROOT / "docs"
 
@@ -17,14 +17,12 @@ def main(names):
     OUT.mkdir(exist_ok=True)
     shutil.copytree(ROOT / "static", OUT / "static", dirs_exist_ok=True)
     (OUT / "data").mkdir(exist_ok=True)
-    (OUT / "background").mkdir(exist_ok=True)
-    shutil.copy(ROOT / BACKGROUND, OUT / BACKGROUND)
     (OUT / ".nojekyll").touch()
     env = app.jinja_env
     for name in names:
         shutil.copy(DATA_DIR / f"{name}.json", OUT / "data" / f"{name}.json")
         html = env.get_template("path.html").render(
-            title=paths[name], prefix="", data_url=f"data/{name}.json", background=BACKGROUND
+            title=paths[name], prefix="", data_url=f"data/{name}.json"
         )
         (OUT / f"{name}.html").write_text(html, encoding="utf-8")
         print("wrote", OUT / f"{name}.html")

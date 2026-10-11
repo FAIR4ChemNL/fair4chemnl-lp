@@ -121,7 +121,8 @@
       "x": 301,
       "y": 121,
       "width": 208,
-      "height": 84
+      "height": 84,
+      "url": "https://fair4chemnl.github.io/training-material/materials/50"
     },
     {
       "id": "what-inchikey",
@@ -130,7 +131,8 @@
       "x": 301,
       "y": 245,
       "width": 208,
-      "height": 84
+      "height": 84,
+      "url": "https://fair4chemnl.github.io/training-material/materials/7"
     },
     {
       "id": "layers",
@@ -140,7 +142,8 @@
       "y": 452,
       "width": 208,
       "height": 124,
-      "fontSize": 25
+      "fontSize": 25,
+      "url": "https://fair4chemnl.github.io/training-material/materials/50"
     },
     {
       "id": "making",
@@ -149,7 +152,8 @@
       "x": 301,
       "y": 785,
       "width": 208,
-      "height": 84
+      "height": 84,
+      "url": "https://fair4chemnl.github.io/training-material/materials/6"
     },
     {
       "id": "chem-search",
@@ -159,7 +163,8 @@
       "y": 183,
       "width": 250,
       "height": 124,
-      "fontSize": 27
+      "fontSize": 27,
+      "url": "https://fair4chemnl.github.io/training-material/materials/34"
     },
     {
       "id": "search-layers",
@@ -178,7 +183,8 @@
       "y": 805,
       "width": 208,
       "height": 124,
-      "fontSize": 28
+      "fontSize": 28,
+      "url": "https://fair4chemnl.github.io/training-material/materials/4"
     }
   ],
   "arrows": [

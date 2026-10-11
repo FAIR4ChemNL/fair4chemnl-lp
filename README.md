@@ -19,7 +19,6 @@ python build_static.py   # exports static pages to docs/ for GitHub Pages
 Each learning path is one JSON file in `data/` (see `data/inchi.json`): the Bloom's `levels` (with their
 stage descriptions), the `sections` (columns, incl. empty ones), the blue `boxes` (label, section, centre
 x/y and size in slide pixels) and the `arrows` between them (optional `via` bend points).
-Tick "overlay original slide" on a page to calibrate coordinates against `background/learning_path.png`.
 The renderer is the reusable `static/learning_path.js` (`LearningPath.render("#chart", "data/x.json")`, needs d3 v7).
 
 GitHub Pages: set the source to the `docs/` folder of the main branch; the example is then at `.../inchi.html`.
