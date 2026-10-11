@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAIR4ChemNL learning paths</title>
+  <link rel="stylesheet" href="{{ prefix|default('') }}static/learning_path.css">
+</head>
+<body>
+  <main class="index">
+    <h1>FAIR4ChemNL learning paths</h1>
+    <ul>
+    {% for name, title in paths.items() %}
+      <li><a href="{{ name }}.html">{{ title }}</a></li>
+    {% endfor %}
+    </ul>
+  </main>
+</body>
+</html>

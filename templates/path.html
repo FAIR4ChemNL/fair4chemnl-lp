@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="{{ prefix }}static/learning_path.css">
+</head>
+<body>
+  <header class="lp-header">
+    <h1>{{ title }}</h1>
+    <label><input type="checkbox" id="overlay"> overlay original slide (for calibrating coordinates)</label>
+  </header>
+  <div id="chart"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="{{ prefix }}static/learning_path.js"></script>
+  <script>
+    const overlay = document.getElementById("overlay");
+    function draw() {
+      LearningPath.render("#chart", "{{ data_url }}", overlay.checked ? { background: "{{ background }}" } : {})
+        .catch((e) => { document.getElementById("chart").textContent = e.message; });
+    }
+    overlay.addEventListener("change", draw);
+    document.fonts.ready.then(draw);
+  </script>
+</body>
+</html>

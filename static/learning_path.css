@@ -1,0 +1,19 @@
+body { margin: 0; font-family: Carlito, Calibri, "Segoe UI", Helvetica, Arial, sans-serif; background: #fafafa; color: #222; }
+header.lp-header { padding: .6rem 1rem; display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+header.lp-header h1 { font-size: 1.1rem; margin: 0; }
+header.lp-header label { font-size: .85rem; color: #555; }
+#chart { max-width: 1645px; margin: 0 auto; background: #fff; box-shadow: 0 0 6px rgba(0,0,0,.15); }
+#chart svg { display: block; width: 100%; height: auto; font-family: Carlito, Calibri, "Segoe UI", Helvetica, Arial, sans-serif; }
+.section-label { font-size: 15px; font-weight: bold; fill: #000; }
+.bloom-title { font-size: 24px; font-style: italic; font-weight: bold; fill: #404040; }
+.bloom-title-last { fill: #548235; }
+.bloom-term { font-size: 16px; font-weight: bold; fill: #548235; }
+.bloom-text { font-size: 16px; fill: #548235; }
+.stages-title { font-size: 24px; font-style: italic; font-weight: bold; fill: #1a1acd; }
+.stage-text { font-size: 16px; font-style: italic; fill: #7f7f7f; }
+.level-label { font-size: 24px; font-style: italic; fill: #009dff; }
+.box-label { fill: #000; pointer-events: none; }
+.box a { cursor: pointer; }
+.box:hover rect { filter: brightness(1.08); }
+.arrow:hover { stroke-width: 5; }
+.index { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; }

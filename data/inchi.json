@@ -1,0 +1,228 @@
+{
+  "title": "InChI learning path",
+  "canvas": {
+    "width": 1645,
+    "height": 924
+  },
+  "bloom": {
+    "title": [
+      "Bloom’s",
+      "(cognitive)",
+      "levels"
+    ],
+    "x": 88
+  },
+  "stagesTitle": "Stages",
+  "levels": [
+    {
+      "id": "beginner",
+      "label": "beginner",
+      "yStart": 0,
+      "yEnd": 307,
+      "bloom": [
+        {
+          "term": "remember",
+          "text": "(recall or reiterate information)"
+        },
+        {
+          "term": "understand",
+          "text": "(demonstrate understanding of facts)"
+        },
+        {
+          "term": "apply",
+          "text": "(apply knowledge to real/new situations)"
+        }
+      ],
+      "description": "Engages with given problems, with known solutions, learning how to analyse them; can use and applies given tools as instructed. (undergraduate, early Master’s level)",
+      "bloomY": 112,
+      "descY": 72
+    },
+    {
+      "id": "intermediate",
+      "label": "intermediate",
+      "yStart": 307,
+      "yEnd": 676,
+      "bloom": [
+        {
+          "term": "apply",
+          "text": "(apply knowledge to real/new situations)"
+        },
+        {
+          "term": "analyse",
+          "text": "(resolve ideas into simple parts, identify patterns)"
+        },
+        {
+          "term": "synthesise",
+          "text": "(pull ideas into a coherent whole, create new ideas)"
+        }
+      ],
+      "description": "Fluent scientist, who can choose and apply methods to given problems, analyse and interpret data, identify basic limitations, and contextualise results; doesn’t generate new problems; seeks guidance to improve performance (PhD/early postdoc)"
+    },
+    {
+      "id": "advanced",
+      "label": "advanced",
+      "yStart": 676,
+      "yEnd": 915,
+      "bloom": [
+        {
+          "term": "synthesise",
+          "text": "(pull ideas into a coherent whole, create new ideas)"
+        },
+        {
+          "term": "evaluate",
+          "text": "(make and defend judgments, assess theories and outcomes)"
+        }
+      ],
+      "description": "from Proficient scientist (contributes to problem formulation) to Independent scientist (expert in critical evaluation; can develop new methods) (career postdoc, PI)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "inchi",
+      "label": "InChI",
+      "x": 166,
+      "width": 250,
+      "color": "#f3f3f3"
+    },
+    {
+      "id": "searching",
+      "label": "Searching databases",
+      "x": 429,
+      "width": 251,
+      "color": "#fcece3"
+    },
+    {
+      "id": "reporting",
+      "label": "Chemical reporting",
+      "x": 695,
+      "width": 250,
+      "color": "#e5ebf7"
+    },
+    {
+      "id": "area4",
+      "label": "Area 4",
+      "x": 962,
+      "width": 251,
+      "color": "#ecf4e4"
+    },
+    {
+      "id": "area5",
+      "label": "Area 5",
+      "x": 1224,
+      "width": 250,
+      "color": "#fef7dc"
+    }
+  ],
+  "boxes": [
+    {
+      "id": "what-inchi",
+      "label": "What is an InChI?",
+      "section": "inchi",
+      "x": 301,
+      "y": 121,
+      "width": 208,
+      "height": 84
+    },
+    {
+      "id": "what-inchikey",
+      "label": "What is an InChIKey?",
+      "section": "inchi",
+      "x": 301,
+      "y": 245,
+      "width": 208,
+      "height": 84
+    },
+    {
+      "id": "layers",
+      "label": "What are InChI(Key) layers",
+      "section": "inchi",
+      "x": 301,
+      "y": 452,
+      "width": 208,
+      "height": 124,
+      "fontSize": 25
+    },
+    {
+      "id": "making",
+      "label": "Making the InChI",
+      "section": "inchi",
+      "x": 301,
+      "y": 785,
+      "width": 208,
+      "height": 84
+    },
+    {
+      "id": "chem-search",
+      "label": "Chemical searching in chemical databases",
+      "section": "searching",
+      "x": 571,
+      "y": 183,
+      "width": 250,
+      "height": 124,
+      "fontSize": 27
+    },
+    {
+      "id": "search-layers",
+      "label": "How can you search with InChI layers",
+      "section": "searching",
+      "x": 550,
+      "y": 473,
+      "width": 208,
+      "height": 124
+    },
+    {
+      "id": "best-practices",
+      "label": "Best practices for chemicals in reporting",
+      "section": "reporting",
+      "x": 819,
+      "y": 805,
+      "width": 208,
+      "height": 124,
+      "fontSize": 28
+    }
+  ],
+  "arrows": [
+    {
+      "from": "what-inchi",
+      "to": "what-inchikey"
+    },
+    {
+      "from": "what-inchikey",
+      "to": "chem-search"
+    },
+    {
+      "from": "what-inchikey",
+      "to": "best-practices",
+      "via": [
+        [
+          752,
+          362
+        ]
+      ]
+    },
+    {
+      "from": "what-inchikey",
+      "to": "layers"
+    },
+    {
+      "from": "chem-search",
+      "to": "search-layers"
+    },
+    {
+      "from": "layers",
+      "to": "search-layers"
+    },
+    {
+      "from": "search-layers",
+      "to": "best-practices"
+    },
+    {
+      "from": "layers",
+      "to": "making"
+    },
+    {
+      "from": "making",
+      "to": "best-practices"
+    }
+  ]
+}

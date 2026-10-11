@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InChI learning path</title>
+  <link rel="stylesheet" href="static/learning_path.css">
+</head>
+<body>
+  <header class="lp-header">
+    <h1>InChI learning path</h1>
+    <label><input type="checkbox" id="overlay"> overlay original slide (for calibrating coordinates)</label>
+  </header>
+  <div id="chart"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="static/learning_path.js"></script>
+  <script>
+    const overlay = document.getElementById("overlay");
+    function draw() {
+      LearningPath.render("#chart", "data/inchi.json", overlay.checked ? { background: "background/learning_path.png" } : {})
+        .catch((e) => { document.getElementById("chart").textContent = e.message; });
+    }
+    overlay.addEventListener("change", draw);
+    document.fonts.ready.then(draw);
+  </script>
+</body>
+</html>
