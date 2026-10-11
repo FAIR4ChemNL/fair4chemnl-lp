@@ -8,9 +8,11 @@
 </head>
 <body>
   <header class="lp-header">
+    <a href="{{ prefix }}{{ 'index.html' if prefix == '' else '' }}"><img class="logo" src="{{ prefix }}static/fair4chemnl-logo.png" alt="FAIR4ChemNL logo"></a>
     <h1>{{ title }}</h1>
   </header>
   <div id="chart"></div>
+  {% include "footer.html" %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script src="{{ prefix }}static/learning_path.js"></script>
   <script>

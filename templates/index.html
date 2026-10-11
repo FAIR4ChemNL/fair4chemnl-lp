@@ -8,6 +8,7 @@
 </head>
 <body>
   <main class="index">
+    <img class="logo" src="{{ prefix|default('') }}static/fair4chemnl-logo.png" alt="FAIR4ChemNL logo">
     <h1>FAIR4ChemNL learning paths</h1>
     <ul>
     {% for name, title in paths.items() %}
@@ -15,5 +16,6 @@
     {% endfor %}
     </ul>
   </main>
+  {% include "footer.html" %}
 </body>
 </html>
