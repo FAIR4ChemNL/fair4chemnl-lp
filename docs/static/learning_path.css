@@ -20,3 +20,5 @@ footer.lp-footer a { color: #0366d6; }
 .box:hover rect { filter: brightness(1.08); }
 .arrow:hover { stroke-width: 5; }
 .index { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; }
+main.about { max-width: 980px; margin: 0 auto; padding: 0 1rem; line-height: 1.5; }
+main.about ol { padding-left: 1.5rem; }

@@ -6,7 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from app import ROOT, DATA_DIR, app, available_paths
+from app import ROOT, DATA_DIR, about_html, app, available_paths
 
 OUT = ROOT / "docs"
 
@@ -26,6 +26,9 @@ def main(names):
         )
         (OUT / f"{name}.html").write_text(html, encoding="utf-8")
         print("wrote", OUT / f"{name}.html")
+    (OUT / "about.html").write_text(
+        env.get_template("about.html").render(prefix="", content=about_html()), encoding="utf-8"
+    )
     (OUT / "index.html").write_text(
         env.get_template("index.html").render(paths={n: paths[n] for n in names}, prefix=""),
         encoding="utf-8",
