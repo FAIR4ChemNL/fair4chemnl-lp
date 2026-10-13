@@ -21,7 +21,7 @@ python build_static.py   # exports static pages to docs/ for GitHub Pages
 `data/template.json` holds the slide template shared by all paths (shown as `/template.html`): the Bloom's `levels` (with their
 stage descriptions) and the five default `sections` ("Area 1" to "Area 5"). Each learning path is one further JSON
 file in `data/` (see `data/inchi.json`) with a `title`, the blue `boxes` (label, section, centre x/y and size
-in slide pixels) and the `arrows` between them (optional `via` bend points); it is merged onto the template by the application. A path can override
+in slide pixels) and the `arrows` between them (optional `via` bend points). Each box has a local `id` and gets its own page (`/<path>/<id>.html`, linked from the chart) showing its `label`, an optional short `description` and zero or more `resources` (`label` + `url`, pointing to the [FAIR4ChemNL training material](https://fair4chemnl.github.io/training-material/)); it is merged onto the template by the application. A path can override
 the defaults of a template section by listing a `sections` entry with the same `id` (e.g. `{"id": "area1", "label": "InChI"}`).
 The renderer is the reusable `static/learning_path.js` (`LearningPath.render("#chart", "data/x.json")`, needs d3 v7).
 

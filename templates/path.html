@@ -20,7 +20,7 @@
   <script src="{{ prefix }}static/learning_path.js"></script>
   <script>
     document.fonts.ready.then(() => {
-      LearningPath.render("#chart", "{{ data_url }}")
+      LearningPath.render("#chart", "{{ data_url }}", { boxHref: (box) => "{{ name }}/" + box.id + ".html" })
         .catch((e) => { document.getElementById("chart").textContent = e.message; });
     });
   </script>

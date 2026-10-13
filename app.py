@@ -65,9 +65,26 @@ def path_page(name):
         "path.html",
         title=paths[name],
         citation=citation(name),
+        name=name,
         prefix="/",
         data_url=f"/data/{name}.json",
     )
+
+
+def render_box(name, box_id, prefix):
+    """Render the page of one blue box; the box (id, label, description, resources) comes from data/<name>.json."""
+    path = load_path(name)
+    box = next((b for b in path["boxes"] if b["id"] == box_id), None)
+    if box is None:
+        abort(404)
+    return render_template("box.html", box=box, name=name, path_title=path["title"], prefix=prefix)
+
+
+@app.route("/<name>/<box_id>.html")
+def box_page(name, box_id):
+    if name not in available_paths(include_template=True):
+        abort(404)
+    return render_box(name, box_id, "/")
 
 
 @app.route("/data/<name>.json")

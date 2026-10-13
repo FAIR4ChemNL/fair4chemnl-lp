@@ -24,7 +24,7 @@
   <script src="static/learning_path.js"></script>
   <script>
     document.fonts.ready.then(() => {
-      LearningPath.render("#chart", "data/inchi.json")
+      LearningPath.render("#chart", "data/inchi.json", { boxHref: (box) => "inchi/" + box.id + ".html" })
         .catch((e) => { document.getElementById("chart").textContent = e.message; });
     });
   </script>

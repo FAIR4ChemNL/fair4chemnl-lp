@@ -1,7 +1,7 @@
 /*
  * Reusable d3.js renderer for Bloom's-taxonomy based learning path slides.
  *
- *   LearningPath.render("#chart", "data/inchi.json");
+ *   LearningPath.render("#chart", "data/inchi.json", { boxHref: (box) => "inchi/" + box.id + ".html" });
  *
  * All coordinates in the JSON are in slide pixels (data.canvas.width x height);
  * boxes are positioned by their centre (x, y).
@@ -136,7 +136,8 @@
       .attr("transform", (d) => `translate(${d.x - d.width / 2},${d.y - d.height / 2})`);
     boxes.each(function (d) {
       const g = d3.select(this);
-      const link = d.url ? g.append("a").attr("href", d.url) : g;
+      const href = opts.boxHref ? opts.boxHref(d) : d.url;
+      const link = href ? g.append("a").attr("href", href) : g;
       link.append("rect").attr("width", d.width).attr("height", d.height)
         .attr("fill", d.fill || BOX_FILL).attr("stroke", BOX_STROKE).attr("stroke-width", 1.5);
       const fs = d.fontSize || 30;

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ box.label }} - {{ path_title }}</title>
+  <link rel="stylesheet" href="{{ prefix }}static/learning_path.css">
+</head>
+<body>
+  <header class="lp-header">
+    <a href="{{ prefix }}{{ 'index.html' if prefix != '/' else '' }}"><img class="logo" src="{{ prefix }}static/fair4chemnl-logo.png" alt="FAIR4ChemNL logo"></a>
+    <h1 id="{{ box.id }}">{{ box.label }}</h1>
+  </header>
+  <main class="about box-page">
+    <p class="back"><a href="{{ prefix }}{{ name }}.html">&larr; {{ path_title }}</a></p>
+    {% if box.description %}<p class="description">{{ box.description }}</p>{% endif %}
+    {% if box.resources %}
+    <h2>Resources</h2>
+    <ul class="resources">
+      {% for r in box.resources %}<li><a href="{{ r.url }}">{{ r.label or r.url }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </main>
+  {% include "footer.html" %}
+</body>
+</html>

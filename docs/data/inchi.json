@@ -124,7 +124,12 @@
       "y": 121,
       "width": 208,
       "height": 84,
-      "url": "https://fair4chemnl.github.io/training-material/materials/50"
+      "resources": [
+        {
+          "label": "Training material 50",
+          "url": "https://fair4chemnl.github.io/training-material/materials/50"
+        }
+      ]
     },
     {
       "id": "what-inchikey",
@@ -134,7 +139,12 @@
       "y": 245,
       "width": 208,
       "height": 84,
-      "url": "https://fair4chemnl.github.io/training-material/materials/7"
+      "resources": [
+        {
+          "label": "Training material 7",
+          "url": "https://fair4chemnl.github.io/training-material/materials/7"
+        }
+      ]
     },
     {
       "id": "layers",
@@ -145,7 +155,12 @@
       "width": 208,
       "height": 124,
       "fontSize": 25,
-      "url": "https://fair4chemnl.github.io/training-material/materials/50"
+      "resources": [
+        {
+          "label": "Training material 50",
+          "url": "https://fair4chemnl.github.io/training-material/materials/50"
+        }
+      ]
     },
     {
       "id": "making",
@@ -155,7 +170,12 @@
       "y": 785,
       "width": 208,
       "height": 84,
-      "url": "https://fair4chemnl.github.io/training-material/materials/6"
+      "resources": [
+        {
+          "label": "Training material 6",
+          "url": "https://fair4chemnl.github.io/training-material/materials/6"
+        }
+      ]
     },
     {
       "id": "chem-search",
@@ -166,7 +186,12 @@
       "width": 250,
       "height": 124,
       "fontSize": 27,
-      "url": "https://fair4chemnl.github.io/training-material/materials/34"
+      "resources": [
+        {
+          "label": "Training material 34",
+          "url": "https://fair4chemnl.github.io/training-material/materials/34"
+        }
+      ]
     },
     {
       "id": "search-layers",
@@ -186,7 +211,12 @@
       "width": 208,
       "height": 124,
       "fontSize": 28,
-      "url": "https://fair4chemnl.github.io/training-material/materials/4"
+      "resources": [
+        {
+          "label": "Training material 4",
+          "url": "https://fair4chemnl.github.io/training-material/materials/4"
+        }
+      ]
     }
   ],
   "arrows": [
