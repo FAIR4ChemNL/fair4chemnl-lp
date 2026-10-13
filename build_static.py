@@ -1,4 +1,4 @@
-"""Export the learning paths as static pages into docs/ for GitHub Pages.
+"""Export the learning paths as static pages into site/ for GitHub Pages.
 
 Usage: python build_static.py [name ...]   (default: all data/*.json)
 """
@@ -9,7 +9,7 @@ from pathlib import Path
 
 from app import ROOT, about_html, app, available_paths, citation, load_path, render_box
 
-OUT = ROOT / "docs"
+OUT = ROOT / "site"
 
 
 def main(names):

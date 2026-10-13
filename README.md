@@ -15,7 +15,7 @@ This repository contains code to put learning paths online.
 ```
 pip install -r requirements.txt
 python app.py            # http://127.0.0.1:5000/ lists all paths, /inchi.html shows the InChI one
-python build_static.py   # exports static pages to docs/ for GitHub Pages
+python build_static.py   # exports static pages to site/ (not committed)
 ```
 
 `data/template.json` holds the slide template shared by all paths (shown as `/template.html`): the Bloom's `levels` (with their
@@ -26,4 +26,4 @@ the defaults of a template section by listing a `sections` entry with the same `
 Linked register materials are shown as tiles (title, description, URL) on the box pages. `python fetch_materials.py` downloads their metadata (`materials/<n>.json` in the register) into `data/materials/`; re-run it when a path links new materials and commit the result.
 The renderer is the reusable `static/learning_path.js` (`LearningPath.render("#chart", "data/x.json")`, needs d3 v7).
 
-GitHub Pages: set the source to the `docs/` folder of the main branch; the example is then at `.../inchi.html`.
+GitHub Pages: deployed by the GitHub Action in `.github/workflows/pages.yml` (set Settings → Pages → Source to "GitHub Actions"); the example is then at `.../inchi.html`.
