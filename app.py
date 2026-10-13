@@ -1,5 +1,6 @@
 """Flask app serving learning-path slides rendered by d3.js from JSON files in data/."""
 import json
+import re
 from pathlib import Path
 
 import markdown
@@ -71,13 +72,21 @@ def path_page(name):
     )
 
 
+def material(url):
+    """Return the cached metadata (title, description, url) of a register training material, or None."""
+    m = re.search(r"/materials/(\d+)/?$", url)
+    f = DATA_DIR / "materials" / f"{m.group(1)}.json" if m else None
+    return json.loads(f.read_text(encoding="utf-8")) if f and f.exists() else None
+
+
 def render_box(name, box_id, prefix):
     """Render the page of one blue box; the box (id, label, description, resources) comes from data/<name>.json."""
     path = load_path(name)
     box = next((b for b in path["boxes"] if b["id"] == box_id), None)
     if box is None:
         abort(404)
-    return render_template("box.html", box=box, name=name, path_title=path["title"], prefix=prefix)
+    resources = [{**r, "material": material(r["url"])} for r in box.get("resources", [])]
+    return render_template("box.html", box=box, resources=resources, name=name, path_title=path["title"], prefix=prefix)
 
 
 @app.route("/<name>/<box_id>.html")

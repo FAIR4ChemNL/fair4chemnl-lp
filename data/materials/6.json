@@ -1,0 +1,5 @@
+{
+  "title": "InChI and SMILES identifiers for chemical structures",
+  "description": "This recipe explains how to take an SDF file, validate the content for chemical inconsistencies, and generate InChIs, InChIKeys, and SMILES for each entry in the SDF file.",
+  "url": "https://w3id.org/faircookbook/FCB007"
+}

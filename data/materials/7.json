@@ -1,0 +1,5 @@
+{
+  "title": "Creating InChIKeys for IUPAC names",
+  "description": "The main purpose of this recipe is to take an IUPAC name and generate an InChIKey from it.",
+  "url": "https://w3id.org/faircookbook/FCB080"
+}

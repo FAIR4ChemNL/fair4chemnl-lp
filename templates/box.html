@@ -14,12 +14,18 @@
   <main class="about box-page">
     <p class="back"><a href="{{ prefix }}{{ name }}.html">&larr; {{ path_title }}</a></p>
     {% if box.description %}<p class="description">{{ box.description }}</p>{% endif %}
-    {% if box.resources %}
+    {% if resources %}
     <h2>Resources</h2>
-    <ul class="resources">
-      {% for r in box.resources %}<li><a href="{{ r.url }}">{{ r.label or r.url }}</a></li>
+    <div class="tiles">
+      {% for r in resources %}
+      {% set m = r.material %}
+      <a class="tile" href="{{ m.url if m else r.url }}">
+        <h3>{{ m.title if m else (r.label or r.url) }}</h3>
+        {% if m and m.description %}<p>{{ m.description }}</p>{% endif %}
+        <span class="tile-url">{{ m.url if m else r.url }}</span>
+      </a>
       {% endfor %}
-    </ul>
+    </div>
     {% endif %}
   </main>
   {% include "footer.html" %}
