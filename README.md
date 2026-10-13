@@ -2,6 +2,8 @@
 
 Learning paths follow the principles defined by the ELIXIR Europe community. A ELIXIR Learning Paths Handbook is available [0].
 
+The slide layout follows the learning path [template](template.html) of Van Geest & Cardona [0].
+
 FAIR4ChemNL WP4 intends to use this approach to develop a number of learning paths. The first around InChIs.
 
 This repository contains code to put learning paths online.
@@ -16,10 +18,11 @@ python app.py            # http://127.0.0.1:5000/ lists all paths, /inchi.html s
 python build_static.py   # exports static pages to docs/ for GitHub Pages
 ```
 
-`data/template.json` holds the slide template shared by all paths: the Bloom's `levels` (with their
-stage descriptions) and the `sections` (columns, incl. empty ones). Each learning path is one further JSON
+`data/template.json` holds the slide template shared by all paths (shown as `/template.html`): the Bloom's `levels` (with their
+stage descriptions) and the five default `sections` ("Area 1" to "Area 5"). Each learning path is one further JSON
 file in `data/` (see `data/inchi.json`) with a `title`, the blue `boxes` (label, section, centre x/y and size
-in slide pixels) and the `arrows` between them (optional `via` bend points); it is merged onto the template.
+in slide pixels) and the `arrows` between them (optional `via` bend points); it is merged onto the template by the application. A path can override
+the defaults of a template section by listing a `sections` entry with the same `id` (e.g. `{"id": "area1", "label": "InChI"}`).
 The renderer is the reusable `static/learning_path.js` (`LearningPath.render("#chart", "data/x.json")`, needs d3 v7).
 
 GitHub Pages: set the source to the `docs/` folder of the main branch; the example is then at `.../inchi.html`.

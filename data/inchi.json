@@ -1,10 +1,24 @@
 {
   "title": "InChI learning path",
+  "sections": [
+    {
+      "id": "area1",
+      "label": "InChI"
+    },
+    {
+      "id": "area2",
+      "label": "Searching databases"
+    },
+    {
+      "id": "area3",
+      "label": "Chemical reporting"
+    }
+  ],
   "boxes": [
     {
       "id": "what-inchi",
       "label": "What is an InChI?",
-      "section": "inchi",
+      "section": "area1",
       "x": 301,
       "y": 121,
       "width": 208,
@@ -14,7 +28,7 @@
     {
       "id": "what-inchikey",
       "label": "What is an InChIKey?",
-      "section": "inchi",
+      "section": "area1",
       "x": 301,
       "y": 245,
       "width": 208,
@@ -24,7 +38,7 @@
     {
       "id": "layers",
       "label": "What are InChI(Key) layers",
-      "section": "inchi",
+      "section": "area1",
       "x": 301,
       "y": 452,
       "width": 208,
@@ -35,7 +49,7 @@
     {
       "id": "making",
       "label": "Making the InChI",
-      "section": "inchi",
+      "section": "area1",
       "x": 301,
       "y": 785,
       "width": 208,
@@ -45,7 +59,7 @@
     {
       "id": "chem-search",
       "label": "Chemical searching in chemical databases",
-      "section": "searching",
+      "section": "area2",
       "x": 571,
       "y": 183,
       "width": 250,
@@ -56,7 +70,7 @@
     {
       "id": "search-layers",
       "label": "How can you search with InChI layers",
-      "section": "searching",
+      "section": "area2",
       "x": 550,
       "y": 473,
       "width": 208,
@@ -65,7 +79,7 @@
     {
       "id": "best-practices",
       "label": "Best practices for chemicals in reporting",
-      "section": "reporting",
+      "section": "area3",
       "x": 819,
       "y": 805,
       "width": 208,

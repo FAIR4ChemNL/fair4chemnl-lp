@@ -24,14 +24,17 @@ def load_path(name):
     """Return the learning path `name` merged onto the shared slide template (data/template.json)."""
     template = json.loads((DATA_DIR / "template.json").read_text(encoding="utf-8"))
     path = json.loads((DATA_DIR / f"{name}.json").read_text(encoding="utf-8"))
-    return {**template, **path}
+    merged = {**template, **path}
+    overrides = {s["id"]: s for s in path.get("sections", [])}
+    merged["sections"] = [{**s, **overrides.get(s["id"], {})} for s in template["sections"]]
+    return merged
 
 
-def available_paths():
-    """Return {name: title} for every data/*.json file except the template."""
+def available_paths(include_template=False):
+    """Return {name: title} for every data/*.json file; the template only on request."""
     paths = {}
     for f in sorted(DATA_DIR.glob("*.json")):
-        if f.stem == "template":
+        if f.stem == "template" and not include_template:
             continue
         paths[f.stem] = json.loads(f.read_text(encoding="utf-8")).get("title", f.stem)
     return paths
@@ -49,7 +52,7 @@ def about():
 
 @app.route("/<name>.html")
 def path_page(name):
-    paths = available_paths()
+    paths = available_paths(include_template=True)
     if name not in paths:
         abort(404)
     return render_template(
@@ -62,7 +65,7 @@ def path_page(name):
 
 @app.route("/data/<name>.json")
 def data_file(name):
-    if name not in available_paths():
+    if name not in available_paths(include_template=True):
         abort(404)
     return jsonify(load_path(name))
 

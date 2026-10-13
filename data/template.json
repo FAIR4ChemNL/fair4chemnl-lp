@@ -1,4 +1,5 @@
 {
+  "title": "Learning path template",
   "canvas": {
     "width": 1645,
     "height": 924
@@ -77,22 +78,22 @@
   ],
   "sections": [
     {
-      "id": "inchi",
-      "label": "InChI",
+      "id": "area1",
+      "label": "Area 1",
       "x": 166,
       "width": 250,
       "color": "#f3f3f3"
     },
     {
-      "id": "searching",
-      "label": "Searching databases",
+      "id": "area2",
+      "label": "Area 2",
       "x": 429,
       "width": 251,
       "color": "#fcece3"
     },
     {
-      "id": "reporting",
-      "label": "Chemical reporting",
+      "id": "area3",
+      "label": "Area 3",
       "x": 695,
       "width": 250,
       "color": "#e5ebf7"
@@ -111,5 +112,7 @@
       "width": 250,
       "color": "#fef7dc"
     }
-  ]
+  ],
+  "boxes": [],
+  "arrows": []
 }

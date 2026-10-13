@@ -13,7 +13,7 @@ OUT = ROOT / "docs"
 
 
 def main(names):
-    paths = available_paths()
+    paths = available_paths(include_template=True)
     names = names or list(paths)
     OUT.mkdir(exist_ok=True)
     shutil.copytree(ROOT / "static", OUT / "static", dirs_exist_ok=True)
@@ -33,7 +33,7 @@ def main(names):
         env.get_template("about.html").render(prefix="", content=about_html()), encoding="utf-8"
     )
     (OUT / "index.html").write_text(
-        env.get_template("index.html").render(paths={n: paths[n] for n in names}, prefix=""),
+        env.get_template("index.html").render(paths={n: paths[n] for n in names if n != "template"}, prefix=""),
         encoding="utf-8",
     )
 
