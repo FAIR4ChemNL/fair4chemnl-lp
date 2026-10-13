@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 import markdown
-from flask import Flask, abort, render_template, send_from_directory
+from flask import Flask, abort, jsonify, render_template
 
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
@@ -20,10 +20,19 @@ def about_html():
     return html
 
 
+def load_path(name):
+    """Return the learning path `name` merged onto the shared slide template (data/template.json)."""
+    template = json.loads((DATA_DIR / "template.json").read_text(encoding="utf-8"))
+    path = json.loads((DATA_DIR / f"{name}.json").read_text(encoding="utf-8"))
+    return {**template, **path}
+
+
 def available_paths():
-    """Return {name: title} for every data/*.json file."""
+    """Return {name: title} for every data/*.json file except the template."""
     paths = {}
     for f in sorted(DATA_DIR.glob("*.json")):
+        if f.stem == "template":
+            continue
         paths[f.stem] = json.loads(f.read_text(encoding="utf-8")).get("title", f.stem)
     return paths
 
@@ -51,9 +60,11 @@ def path_page(name):
     )
 
 
-@app.route("/data/<path:filename>")
-def data_file(filename):
-    return send_from_directory(DATA_DIR, filename)
+@app.route("/data/<name>.json")
+def data_file(name):
+    if name not in available_paths():
+        abort(404)
+    return jsonify(load_path(name))
 
 
 

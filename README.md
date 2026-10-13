@@ -16,9 +16,10 @@ python app.py            # http://127.0.0.1:5000/ lists all paths, /inchi.html s
 python build_static.py   # exports static pages to docs/ for GitHub Pages
 ```
 
-Each learning path is one JSON file in `data/` (see `data/inchi.json`): the Bloom's `levels` (with their
-stage descriptions), the `sections` (columns, incl. empty ones), the blue `boxes` (label, section, centre
-x/y and size in slide pixels) and the `arrows` between them (optional `via` bend points).
+`data/template.json` holds the slide template shared by all paths: the Bloom's `levels` (with their
+stage descriptions) and the `sections` (columns, incl. empty ones). Each learning path is one further JSON
+file in `data/` (see `data/inchi.json`) with a `title`, the blue `boxes` (label, section, centre x/y and size
+in slide pixels) and the `arrows` between them (optional `via` bend points); it is merged onto the template.
 The renderer is the reusable `static/learning_path.js` (`LearningPath.render("#chart", "data/x.json")`, needs d3 v7).
 
 GitHub Pages: set the source to the `docs/` folder of the main branch; the example is then at `.../inchi.html`.

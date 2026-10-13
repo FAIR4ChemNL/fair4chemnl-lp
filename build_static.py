@@ -2,11 +2,12 @@
 
 Usage: python build_static.py [name ...]   (default: all data/*.json)
 """
+import json
 import shutil
 import sys
 from pathlib import Path
 
-from app import ROOT, DATA_DIR, about_html, app, available_paths
+from app import ROOT, about_html, app, available_paths, load_path
 
 OUT = ROOT / "docs"
 
@@ -20,7 +21,9 @@ def main(names):
     (OUT / ".nojekyll").touch()
     env = app.jinja_env
     for name in names:
-        shutil.copy(DATA_DIR / f"{name}.json", OUT / "data" / f"{name}.json")
+        (OUT / "data" / f"{name}.json").write_text(
+            json.dumps(load_path(name), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
         html = env.get_template("path.html").render(
             title=paths[name], prefix="", data_url=f"data/{name}.json"
         )

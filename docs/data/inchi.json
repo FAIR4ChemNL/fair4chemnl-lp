@@ -1,5 +1,4 @@
 {
-  "title": "InChI learning path",
   "canvas": {
     "width": 1645,
     "height": 924
@@ -113,6 +112,7 @@
       "color": "#fef7dc"
     }
   ],
+  "title": "InChI learning path",
   "boxes": [
     {
       "id": "what-inchi",
