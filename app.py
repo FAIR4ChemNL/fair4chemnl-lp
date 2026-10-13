@@ -30,6 +30,12 @@ def load_path(name):
     return merged
 
 
+def citation(name):
+    """Return (text, url) of the optional citation set in the path's own data file (not inherited from the template)."""
+    raw = json.loads((DATA_DIR / f"{name}.json").read_text(encoding="utf-8"))
+    return raw.get("citation"), raw.get("citation_url")
+
+
 def available_paths(include_template=False):
     """Return {name: title} for every data/*.json file; the template only on request."""
     paths = {}
@@ -58,6 +64,7 @@ def path_page(name):
     return render_template(
         "path.html",
         title=paths[name],
+        citation=citation(name),
         prefix="/",
         data_url=f"/data/{name}.json",
     )

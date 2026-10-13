@@ -12,6 +12,9 @@
     <h1>{{ title }}</h1>
   </header>
   <div id="chart"></div>
+  {% if citation and citation[0] %}
+  <p class="lp-citation">Based on: {{ citation[0] }}{% if citation[1] %} <a href="{{ citation[1] }}">{{ citation[1] }}</a>{% endif %}</p>
+  {% endif %}
   {% include "footer.html" %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script src="{{ prefix }}static/learning_path.js"></script>

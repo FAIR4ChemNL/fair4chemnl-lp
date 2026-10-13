@@ -22,3 +22,4 @@ footer.lp-footer a { color: #0366d6; }
 .index { max-width: 40rem; margin: 2rem auto; padding: 0 1rem; }
 main.about { max-width: 980px; margin: 0 auto; padding: 0 1rem; line-height: 1.5; }
 main.about ol { padding-left: 1.5rem; }
+p.lp-citation { max-width: 1645px; margin: 16px auto 0; padding: 0 1rem; font-size: 85%; color: #6a737d; box-sizing: border-box; }

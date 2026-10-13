@@ -7,7 +7,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from app import ROOT, about_html, app, available_paths, load_path
+from app import ROOT, about_html, app, available_paths, citation, load_path
 
 OUT = ROOT / "docs"
 
@@ -25,7 +25,7 @@ def main(names):
             json.dumps(load_path(name), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
         html = env.get_template("path.html").render(
-            title=paths[name], prefix="", data_url=f"data/{name}.json"
+            title=paths[name], citation=citation(name), prefix="", data_url=f"data/{name}.json"
         )
         (OUT / f"{name}.html").write_text(html, encoding="utf-8")
         print("wrote", OUT / f"{name}.html")
