@@ -3,8 +3,10 @@
  *
  *   LearningPath.render("#chart", "data/inchi.json", { boxHref: (box) => "inchi/" + box.id + ".html" });
  *
- * All coordinates in the JSON are in slide pixels (data.canvas.width x height);
- * boxes are positioned by their centre (x, y).
+ * All coordinates are in slide pixels (data.canvas.width x height). Boxes have a predefined size
+ * (data.boxLayout) and are only given a `section` (column), a `level` and a `position` (1-based slot
+ * within the level); they are centred in their column and spread evenly over the level's height.
+ * The font size is scaled so the label fits the box.
  */
 (function (global) {
   const GREEN = "#548235", GREY = "#7f7f7f", BLUE = "#009dff", ARROW = "#335fa8";
@@ -38,8 +40,38 @@
     return [b.x + dx * s, b.y + dy * s];
   }
 
+  // Set x, y, width, height of every box from its section, level and position.
+  function layout(data) {
+    const cfg = data.boxLayout, secs = new Map(data.sections.map((s) => [s.id, s]));
+    data.boxes.forEach(function (b) {
+      const sec = secs.get(b.section), lvl = data.levels.find((l) => l.id === b.level);
+      if (!sec || !lvl) { console.warn("Box with unknown section or level", b); return; }
+      const n = cfg.maxPerLevel[lvl.id], top = lvl.yStart + (lvl.yStart === 0 ? cfg.top : 0);
+      if (!(b.position >= 1 && b.position <= n)) console.warn("Position out of range for level " + lvl.id, b);
+      b.width = cfg.width; b.height = cfg.height;
+      b.x = sec.x + sec.width / 2;
+      b.y = top + (b.position - 0.5) * (lvl.yEnd - top) / n;
+    });
+  }
+
+  // Largest font size (within bounds) at which the wrapped label fits the box; returns the wrapped lines count.
+  function fitLabel(t, d, cfg) {
+    const padX = 10, padY = 6, lh = 1.12;
+    let fs = cfg.maxFontSize, n;
+    for (; fs >= cfg.minFontSize; fs--) {
+      t.style("font-size", fs + "px");
+      n = wrap(t, d.label.split(/\s+/), d.width - 2 * padX, fs * lh, d.width / 2);
+      const widest = d3.max(t.selectAll("tspan").nodes(), (s) => s.getComputedTextLength());
+      if (n * fs * lh <= d.height - 2 * padY && widest <= d.width - 2 * padX) break;
+    }
+    fs = Math.max(fs, cfg.minFontSize);
+    const total = (n - 1) * fs * lh;
+    t.selectAll("tspan").attr("y", (_, i) => d.height / 2 - total / 2 + i * fs * lh + fs * 0.35);
+  }
+
   function draw(container, data, opts) {
     opts = opts || {};
+    layout(data);
     const W = data.canvas.width, H = data.canvas.height;
     const root = d3.select(container);
     root.selectAll("*").remove();
@@ -140,12 +172,9 @@
       const link = href ? g.append("a").attr("href", href) : g;
       link.append("rect").attr("width", d.width).attr("height", d.height)
         .attr("fill", d.fill || BOX_FILL).attr("stroke", BOX_STROKE).attr("stroke-width", 1.5);
-      const fs = d.fontSize || 30;
-      const t = link.append("text").attr("class", "box-label").style("font-size", fs + "px")
-        .attr("text-anchor", "middle").attr("x", d.width / 2).attr("y", 0);
-      const n = wrap(t, d.label.split(/\s+/), d.width - 16, fs * 1.12, d.width / 2);
-      const total = (n - 1) * fs * 1.12;
-      t.selectAll("tspan").attr("y", function (_, i) { return d.height / 2 - total / 2 + i * fs * 1.12 + fs * 0.35; });
+      const t = link.append("text").attr("class", "box-label").attr("text-anchor", "middle")
+        .attr("x", d.width / 2).attr("y", 0);
+      fitLabel(t, d, data.boxLayout);
       if (d.tooltip) link.append("title").text(d.tooltip);
     });
     return svg;

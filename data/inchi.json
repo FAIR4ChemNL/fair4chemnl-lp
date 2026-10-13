@@ -19,97 +19,80 @@
       "id": "what-inchi",
       "label": "What is an InChI?",
       "section": "area1",
-      "x": 301,
-      "y": 121,
-      "width": 208,
-      "height": 84,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/50"
         }
-      ]
+      ],
+      "level": "beginner",
+      "position": 1
     },
     {
       "id": "what-inchikey",
       "label": "What is an InChIKey?",
       "section": "area1",
-      "x": 301,
-      "y": 245,
-      "width": 208,
-      "height": 84,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/7"
         }
-      ]
+      ],
+      "level": "beginner",
+      "position": 2
     },
     {
       "id": "layers",
       "label": "What are InChI(Key) layers",
       "section": "area1",
-      "x": 301,
-      "y": 452,
-      "width": 208,
-      "height": 124,
-      "fontSize": 25,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/50"
         }
-      ]
+      ],
+      "level": "intermediate",
+      "position": 2
     },
     {
       "id": "making",
       "label": "Making the InChI",
       "section": "area1",
-      "x": 301,
-      "y": 785,
-      "width": 208,
-      "height": 84,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/6"
         }
-      ]
+      ],
+      "level": "advanced",
+      "position": 1
     },
     {
       "id": "chem-search",
       "label": "Chemical searching in chemical databases",
       "section": "area2",
-      "x": 571,
-      "y": 183,
-      "width": 250,
-      "height": 124,
-      "fontSize": 27,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/34"
         }
-      ]
+      ],
+      "level": "beginner",
+      "position": 2
     },
     {
       "id": "search-layers",
       "label": "How can you search with InChI layers",
       "section": "area2",
-      "x": 550,
-      "y": 473,
-      "width": 208,
-      "height": 124
+      "level": "intermediate",
+      "position": 2
     },
     {
       "id": "best-practices",
       "label": "Best practices for chemicals in reporting",
       "section": "area3",
-      "x": 819,
-      "y": 805,
-      "width": 208,
-      "height": 124,
-      "fontSize": 28,
       "resources": [
         {
           "url": "https://fair4chemnl.github.io/training-material/materials/4"
         }
-      ]
+      ],
+      "level": "advanced",
+      "position": 2
     }
   ],
   "arrows": [
@@ -126,8 +109,16 @@
       "to": "best-practices",
       "via": [
         [
-          752,
-          362
+          445,
+          300
+        ],
+        [
+          690,
+          300
+        ],
+        [
+          690,
+          720
         ]
       ]
     },

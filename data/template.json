@@ -116,5 +116,17 @@
     }
   ],
   "boxes": [],
-  "arrows": []
+  "arrows": [],
+  "boxLayout": {
+    "width": 210,
+    "height": 90,
+    "top": 50,
+    "maxPerLevel": {
+      "beginner": 2,
+      "intermediate": 3,
+      "advanced": 2
+    },
+    "maxFontSize": 30,
+    "minFontSize": 10
+  }
 }
