@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ prefix }}static/learning_path.css">
+  {% if name != "template" %}<link rel="alternate" type="application/ld+json" href="{{ prefix }}{{ name }}.jsonld">{% endif %}
 </head>
 <body>
   <header class="lp-header">
