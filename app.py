@@ -96,6 +96,35 @@ def box_page(name, box_id):
     return render_box(name, box_id, "/")
 
 
+def jsonld_response(doc):
+    return app.response_class(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", mimetype="application/ld+json")
+
+
+@app.route("/sitemap.xml")
+def sitemap_file():
+    from linked_data import sitemap
+
+    return app.response_class(sitemap(list(available_paths())), mimetype="application/xml")
+
+
+@app.route("/<name>.jsonld")
+def path_jsonld_file(name):
+    from linked_data import path_jsonld  # imported here: linked_data itself imports this module
+
+    if name == "template" or name not in available_paths():
+        abort(404)
+    return jsonld_response(path_jsonld(name))
+
+
+@app.route("/<name>/<box_id>.jsonld")
+def box_jsonld_file(name, box_id):
+    from linked_data import module_jsonld
+
+    if name == "template" or name not in available_paths() or box_id not in {b["id"] for b in load_path(name)["boxes"]}:
+        abort(404)
+    return jsonld_response(module_jsonld(name, box_id))
+
+
 @app.route("/data/<name>.json")
 def data_file(name):
     if name not in available_paths(include_template=True):
